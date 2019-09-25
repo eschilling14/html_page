@@ -1,0 +1,68 @@
+Sub StockData()
+
+Dim StockDataTable As Integer
+
+    StockDataTable = 2
+
+Dim TotalVolume As Double
+
+    TotalVolume = 0
+
+Dim ticker As String
+
+Dim YearlyChange As Double
+
+Dim OpenPrice As Integer
+
+Dim CloserPrice As Integer
+
+Dim percentone As String
+
+    YearlyChange = 0
+
+
+    For i = 2 To 70926
+    If Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
+        
+        ticker = Cells(i, 1).Value
+        
+        TotalVolume = TotalVolume + Cells(i, 7).Value
+        
+        YearlyChange = YearlyChange + Cells(i, 6).Value - Cells(i, 3).Value
+        
+    percentone = Cells(i, 3).Value - Cells(i, 6).Value
+    
+    percenttwo = percentone / Cells(i, 6).Value
+    
+         
+    Range("I" & StockDataTable).Value = ticker
+        
+    Range("J" & StockDataTable).Value = TotalVolume
+        
+    Range("K" & StockDataTable).Value = YearlyChange
+    
+    Range("L" & StockDataTable).Value = percenttwo
+        
+        StockDataTable = StockDataTable + 1
+        
+        TotalVolume = 0
+        YearlyChange = 0
+        percenttwo = 0
+        
+    
+    
+    
+   Else
+   
+   TotalVolume = TotalVolume + Cells(i, 7).Value
+   YearlyChange = YearlyChange + Cells(i, 6).Value - Cells(i, 3).Value
+   
+   
+
+End If
+Next i
+
+
+    
+End Sub
+
